@@ -40,52 +40,11 @@
 </template>
 
 <script>
+import Cookie from 'js-cookie';
+
   export default {
     data(){
       return{
-        menuData: [
-        {
-          path: '/home',
-          name: 'home',
-          label: '首页',
-          icon: 's-home',
-          url: 'Home/Home'
-        },
-        {
-          path: '/goods',
-          name: 'goods',
-          label: '商品管理',
-          icon: 'goods',
-          url: 'MallManage/MallManage'
-        },
-        {
-          path: '/user',
-          name: 'user',
-          label: '用户管理',
-          icon: 'user',
-          url: 'UserManage/UserManage'
-        },
-        {
-          label: '其他',
-          icon: 'location',
-          children: [
-            {
-              path: '/page1',
-              name: 'page1',
-              label: '页面1',
-              icon: 'setting',
-              url: 'Other/PageOne'
-            },
-            {
-              path: '/page2',
-              name: 'page2',
-              label: '页面2',
-              icon: 'setting',
-              url: 'Other/PageTwo'
-            }
-          ]
-        }
-      ],
       }
     },
     methods: {
@@ -111,9 +70,13 @@
       noChildren(){
         return this.menuData.filter(item => !item.children)
       },
+      // 菜单栏状态
       isCollapse(){
         return this.$store.state.menu.isCollapse
       },
+      menuData(){
+        return JSON.parse(Cookie.get('menuData'))  || this.$store.state.menu.menuData
+      }
       
     },
     

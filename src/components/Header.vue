@@ -38,6 +38,7 @@ export default {
         logout(command){
         if(command === 'cancel'){
             Cookie.remove('token')
+            Cookie.remove('menuData')
             this.$router.push('/login')
         }
     }

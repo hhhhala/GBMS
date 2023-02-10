@@ -34,16 +34,19 @@ export default {
     methods: {
         // 登录
         submit() {
-            // token信息
-            // const token = Mock.Random.guid()
-            // token信息存入cookie用于不同页面间的通信
-            // Cookie.set('token', token)
+            // 登录校验
             this.$refs.form.validate((valid) => {
                 if(valid){
                     getMenu(this.form).then(({data}) => {
                         console.log(data);
                         if(data.code == 20000) {
                             Cookie.set('token', data.data.token)
+
+                            // 获取菜单的数据，存入store中
+                            this.$store.commit('setMenu', data.data.menuData)
+                            this.$store.commit('addMenu', this.$router)
+
+                            // 跳转至首页
                             this.$router.push('/home')
                         }else{
                             this.$message.error(data.data.message)

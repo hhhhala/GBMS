@@ -5,7 +5,7 @@ export default{
         const { username, password } = JSON.parse(config.body)
         // 判断用户是否存在
         // 判断账号密码是否正确
-        if(username === 'admin' && password === 'admin'){
+        if(username === '1' && password === '1'){
             return{
                 code: 20000,
                 data:{
@@ -15,21 +15,21 @@ export default{
                           name: 'home',
                           label: '首页',
                           icon: 's-home',
-                          url: 'Home/Home'
+                          url: 'Home.vue'
                         },
                         {
                           path: '/goods',
                           name: 'goods',
                           label: '商品管理',
                           icon: 'goods',
-                          url: 'MallManage/MallManage'
+                          url: 'MallManage.vue'
                         },
                         {
                           path: '/user',
                           name: 'user',
                           label: '用户管理',
                           icon: 'user',
-                          url: 'UserManage/UserManage'
+                          url: 'UserManage.vue'
                         },
                         {
                           label: '其他',
@@ -40,14 +40,14 @@ export default{
                               name: 'page1',
                               label: '页面1',
                               icon: 'setting',
-                              url: 'Other/PageOne'
+                              url: 'PageOne.vue'
                             },
                             {
                               path: '/page2',
                               name: 'page2',
                               label: '页面2',
                               icon: 'setting',
-                              url: 'Other/PageTwo'
+                              url: 'PageTwo.vue'
                             }
                           ]
                         }
